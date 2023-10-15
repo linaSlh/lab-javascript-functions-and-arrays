@@ -1,19 +1,83 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+function maxOfTwoNumbers(a,b) {
+  if (a >= b ){
+    return a;
+  }
+  else if (b > a){
+    return b;
+  }
+ 
+}
+console.log(maxOfTwoNumbers(5,2))
 
 
 
 // Iteration #2: Find longest word
-const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+
+
+function findLongestWord(words) {
+   
+    if (words.length === 0) {
+      return null ; 
+    }
+  
+    let longestWord = words[0]; 
+  
+    for (let i = 1; i < words.length; i++) { 
+      if (words[i].length > longestWord.length) {
+        longestWord = words[i];
+      }
+    }
+  
+    return longestWord;
+  }
+  
+  const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+  const longest = findLongestWord(words);
+  console.log(`The longest word is "${longest}"`);
+
+    
+
+  
+
+
+
+   
+    
+    
+
+    
+
+    
+    
+  
+
+  
+ 
+
 
 
 
 // Iteration #3: Calculate the sum
+
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(arr) {
+  if(arr.length === 0 ){
+    return 0;
+  }
+  
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+const result = sumNumbers(numbers);
+console.log(result); 
+
 
 
 
@@ -26,18 +90,63 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+
+function averageNumbers(array) {
+  if (array.length === 0){
+    return null;
+  }
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+      const average = sum += array[i] / array.length;
+      return average ;
+      
+  }
+  return sum;
+}
+
+const avResult = averageNumbers(numbersAvg);
+console.log(avResult);
+
 
 
 // Level 2: Array of strings
+//Implement the function named averageWordLength that receives as a single argument an array of words and 
+//returns the average length of the words:
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(strArray) { 
+  if (strArray.length === 0){
+    return null;
+  }
+  
+  
+    let strsum = 0;
+    
+    for (let i = 0; i < strArray.length; i++) {
+ 
+        strsum +=strArray[i].length;
+    }
+   
+  const strAverage = strsum / strArray.length;
+  return strAverage;
+    
+}
+const strAvResult = averageWordLength(wordsArr);
+  console.log(strAvResult);
 
 // Bonus - Iteration #4.1
 function avg() {}
 
 // Iteration #5: Unique arrays
+//Take the following array, remove the duplicates, and return a new array.
+// You are more than likely going to want to check out the Array methods indexOf and includes.
+
+//Do this in the form of a function uniquifyArray that receives an array of words as an argument.
+//1.loop through the array to find if the first word === [i])
+//2.get the positiion of the duplicated word using indexof() and and removing it using splice() ?
+//3.creating a new array using push()
+
+
 const wordsUnique = [
   'crab',
   'poison',
@@ -52,18 +161,69 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
 
 
+// function uniquifyArray(wordsArr) {
+   
 
+
+//   let duplicateWord = wordsArr[0]; 
+
+//   for (let i = 0; i <= wordsArr.length; i++) {  
+//     if (wordsArr[i] === duplicateWord) {
+//       duplicateWord = wordsArr[i];
+//     }
+
+//   }
+
+//   return longestWord;
+// }
+function uniquifyArray(wordsArray) {
+  if (wordsArray.length === 0){
+    return null;
+  }
+  const uniqueArray = [];
+
+  for (let i = 0; i < wordsArray.length; i++) {
+      if (uniqueArray.indexOf(wordsArray[i]) === -1) {
+          uniqueArray.push(wordsArray[i]);
+      }
+  }
+
+  return uniqueArray;
+}
+const uniqueWords = uniquifyArray(wordsUnique);
+console.log(uniqueWords)
 // Iteration #6: Find elements
+//Let's create a simple array search.
+
+//Declare a function named doesWordExist that will take in an array of words 
+//as one argument and a word to search for as the other. Return true if the word exists in the array; otherwise, return false.
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
-
+function doesWordExist(arrayOfWords,searchWord) {
+  if (arrayOfWords.length === 0) {
+    return null;
+  }
+  for (let i = 0 ; i < arrayOfWords.length; i++){
+    if (arrayOfWords[i] === searchWord){
+      return true;
+    }
+   
+  }
+  
+    return false;
+  
+}
+let searchWord = 'trouble'
+const wordExists = doesWordExist(wordsFind,searchWord);
+console.log(wordExists)
 
 
 // Iteration #7: Count repetition
+// Declare a function named howManyTimes that will take in an array of words as the first argument
+// and a word to search for as the second argument.
+// The function will return the number of times that word appears in the array.
 const wordsCount = [
   'machine',
   'matter',
@@ -78,7 +238,20 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(countArray,targetWord) {
+  let count = 0;
+  for (let i=0 ; i< countArray.length; i++){
+    if (countArray[i] === targetWord){
+      count ++;
+    }
+
+  }
+  return count;
+}
+let targetWord = 'matter'
+const rsltCount = howManyTimes(wordsCount,targetWord);
+console.log(rsltCount)
+
 
 
 
